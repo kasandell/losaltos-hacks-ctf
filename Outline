@@ -1,0 +1,28 @@
+things to incorporate into ctf
+
+data decompression
+cracking a hashed password
+brute forcing a server
+asynchronous call
+ 
+ 
+ctf story
+Our employer was robbed of a few million dollars needs it back (or he found out harambe was a setup, and he wants to make sure the man who did the hit doesn’t get paid for his work) - he’s given us his bank account number to transfer the money into when we get it, and says to transfer the money to him and then He’ll pay us based on how we do
+He’s given us his personal ip, which we ssh into and get data from
+data is a server Ip and a note that says dan appel has some data his account that might help us. When you visit ip its bank website with simple login page
+Allow sql injection to return list of users, passwords, and groups
+find dan applels credentials and log in
+safety deposit box tab, 6 char numerically password protected. Brute force our way through the password
+find a compressed file, compressed with his “super amazing, brand new compression algorithm cuz he’s such an awesome programmer”
+    decompress data, which gives us link to personal blog
+blog  contains a bunch of crap about his personal trips to countries
+when you inspect element, you see that theres a hidden button that links to another site
+Site has a bunch of drop down lists for password selection. -> take the country abbreviations off of his blog about his trips in chronological order
+entering password gets us to a directory that contains a password protected file, and a hash - DanIsAMediocreProgrammer hash algorithm. Look it up and find the description of how the hashing algorithm works, and make users unhash the password
+use password to get into file
+file has 2 ips with passwords. 
+first ip is bank terminal 
+    when you login, the terminal is just blank and theres no help function. it just says you, mr. whatever should know the commands
+2nd ip gets us into a restricted account. we can se that there is the source code for the bank terminal but we don’t have read access. We have to find a way to switch accounts or add ourselves to the group that has read access. Then we can read the source code and see that calling the transfer function transfers money to the account if we have the sufficient funds, and then updates the new amount in the account many seconds later. Simply write a script that calls transfer a ton of times per second, or asynchronously calls the right number of transfers to get the amount we need.
+    Transfer should write to a url + the account number so that we know when a certain user reaches the end. We just then map each unique bank account number to a user (have them submit their name(s) before the challenge starts and then the form gives them a unique bank account number to submit to).
+
