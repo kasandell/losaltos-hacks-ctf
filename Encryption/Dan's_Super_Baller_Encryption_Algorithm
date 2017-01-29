@@ -1,7 +1,0 @@
-define alphabet as [a-zA-Z0-9/:.]
-Start Encryption at x = 13
-Perform rotX on first letter
-XOR first letter with address modulo totalNumAddresses
-store new first letter
-increase address and x
-if x > numAddresses in alphabet, x = 0

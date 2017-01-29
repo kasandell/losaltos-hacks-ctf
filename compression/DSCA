@@ -1,0 +1,37 @@
+Dan's Super Compression Algorithm (DSCA)
+
+Dan's super compression algorithm is a short string compression algorithm that shows 50% size reduction. 
+Wow, I'm just such a good coder. It's not like this is super easy to duplicate or anything. Well, anyways, 
+if you ever forget how to write your own stupid algorith, here's a reference for you.
+
+The characters you'll need are as follows. 
+1 - .
+2 - /
+3 - :
+4 - a
+5 - b
+6 - c
+7 - g
+8 - h
+9 - k
+10 - l
+11 - m
+12 - o
+13 - p
+14 - s
+15 - t
+16 - w
+IN THAT ORDER.
+To compress a string that contains these characters, you would do the following:
+Create a table of these values.
+Create an empty array
+For every character in the string:
+    Find it in the table, and record its location
+For every 2 addresses:
+    Combine them into 1 8bit unsigned integer, and write it to a file
+
+For instance, the string '.com' becomes 1 6 12 11 in addresses
+These addresses are then taken in groups of two, and the first address is placed in the upper nybble of an 8bit integer, and the second is placed in the lower nybble.
+
+To decompress, well, just reverse what I told you how to do. 
+
