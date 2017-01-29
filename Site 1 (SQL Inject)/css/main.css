@@ -1,0 +1,51 @@
+body, html {
+	background-color: black;
+	color: #00ff00;
+	font-family: monospace;
+}
+
+.main {
+	margin: 10vw;
+	text-align: center;
+}
+
+.main h1 {
+	font-size: 4em;
+}
+
+.inp {
+	text-align: center;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #00ff00;
+	font-size: 3em;
+	font-family: monospace;
+	padding: 10px;
+	color: #00ff00;
+}
+
+.inp:focus {
+	outline: none;
+	border-bottom: 1px solid red;
+}
+
+a {
+	color: orange;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: red;
+}
+
+.inp-submit {
+	text-align: center;
+	background: transparent;
+	border: 1px solid #00ff00;
+	font-size: 3em;
+	font-family: monospace;
+	padding: 10px;
+	color: #00ff00;
+	display: block;
+	margin-top: 50px;
+}
