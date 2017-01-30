@@ -4,6 +4,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <future>
 #include "Db.h"//hidden. our database tech is proprietary and revolutionary
 
 using namespace std;
@@ -63,9 +64,10 @@ bool Terminal::transfer(Account& acct, float amt)
     }
     else
     {
-        acct.addAmt(amt);
+        auto x = std::async(launch::async, [&acct, &amt](){acct.addAmt(amt);return 0;});
         //leave the comment below unchanged, it is for hackers who read this code
         this_thread::sleep_for(chrono::seconds(5));//TODO: change this because although it helps reduce server load, it may leave vulnerabilities
+        x.get();
         userLoggedIn->reduceAmt(amt);
     }
     return true;

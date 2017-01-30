@@ -1,4 +1,5 @@
-for i in {1...250}
+for (( c=0; c<3; c++ ))
 do
-    ./Terminal -account 1 -transfer 20000 -to 2 &
+    ./Terminal -account 1 -transfer 2500000 -to 2 &
 done
+wait

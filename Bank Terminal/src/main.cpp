@@ -1,29 +1,28 @@
 #include "Term.h"
+#include <vector>
 #include <iostream>
 #include <map>
 #include <string>
+#include <future>
+
 using namespace std;
 
 map<string, string> parseArgs(int argc, char** argv)
 {
-    cout << "in" << endl;
     map<string, string> argTable;
     for(int i = 0; i< argc -1 ; i++)
     {
         string s = argv[i];
         if(s == "-account")
         {
-            cout << "account: " << argv[i+1] << endl;
             argTable[argv[i]] = (argv[i+1]);//atoi
         }
         else if(s == "-transfer")
         {
-            cout << "amount: " << argv[i+1] << endl;
             argTable[argv[i]] = (argv[i+1]);//atof
         }
         else if(s == "-to")
         {
-            cout << "to: " << argv[i+1] << endl;
             argTable[argv[i]] = (argv[i+1]);//atoi
         }
         else
@@ -31,7 +30,6 @@ map<string, string> parseArgs(int argc, char** argv)
             continue;
         }
     }
-    cout << "Made it" << endl;
     return argTable;
 }
 
@@ -51,6 +49,20 @@ int main(int argc, char** argv)
     {
         Account acctTo(atoi(mp["-to"].c_str()));
         term.transfer(acctTo, atof(mp["-transfer"].c_str()));
+        //user will have write access, needs to write something like the following
+        /*
+        vector<future<int> > v;
+        for(int i = 0; i < 100; i++)
+        {
+            v.emplace_back(async(launch::async, [&term, &acctTo, &mp](){term.transfer(acctTo, atof(mp["-transfer"].c_str())); return 0; }));
+        }
+        for(auto &&f: v)
+        {
+            f.get();
+
+        }
+        */
     }
+
     return 0;
 }
