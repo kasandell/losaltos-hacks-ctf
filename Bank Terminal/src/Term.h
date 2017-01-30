@@ -22,7 +22,7 @@ class Account
             Database::updateAmount(acctNumber, amt);
         }
     private:
-        int acctNumber
+        int acctNumber;
         float amt;
 };
 
@@ -58,6 +58,7 @@ bool Terminal::transfer(Account& acct, float amt)
 {
     if(amt > userLoggedIn->getAmount())
     {
+        cout << "Insufficient funds" << endl;
         return false;
     }
     else

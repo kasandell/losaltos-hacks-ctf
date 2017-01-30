@@ -14,11 +14,11 @@ class Database
         static string baseDirectory;
 };
 
-string Database::baseDirectory = "/tmp/losaltoshacks/";//TODO: set up this dir on the computer
+string Database::baseDirectory = "";//TODO: set up this dir on the computer
 
-void Database::updateAmount(int acctNumber, float newAmt)
+bool Database::updateAmount(int acctNumber, float newAmt)
 {
-    ofstream out((baseDirectory + to_string(acctNumber));
+    ofstream out((baseDirectory + to_string(acctNumber)));
     if(!out.bad())
     {
         out << newAmt;
