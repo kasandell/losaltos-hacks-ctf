@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 app.config['BASIC_AUTH_USERNAME'] = 'danappelxx'
-app.config['BASIC_AUTH_PASSWORD'] = 'country-codes'
+app.config['BASIC_AUTH_PASSWORD'] = 'FRRUCADEMXSEITIL'
 
 basic_auth = BasicAuth(app)
 

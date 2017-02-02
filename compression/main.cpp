@@ -22,7 +22,7 @@ int main()
     {
         addrs.push_back(lookup.find(c));
     }
-    ofstream out("hi.txt");
+    ofstream out("compressed.txt");
     for(int i = 0; i < addrs.size(); i+=2)
     {
         uint8_t c = (addrs[i] << 4) | (addrs[i+1] & 0x0F);

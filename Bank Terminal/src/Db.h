@@ -14,7 +14,7 @@ class Database
         static string baseDirectory;
 };
 
-string Database::baseDirectory = "";//TODO: set up this dir on the computer
+string Database::baseDirectory = "/tmp/losaltoshacksdb/";//TODO: set up this dir on the computer
 
 bool Database::updateAmount(int acctNumber, float newAmt)
 {

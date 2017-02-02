@@ -1,3 +1,4 @@
+//Bank Terminal: controls the movement of money between accounts
 #include "Term.h"
 #include <vector>
 #include <iostream>
@@ -7,23 +8,25 @@
 
 using namespace std;
 
+
+//calling this program requires a special signature
 map<string, string> parseArgs(int argc, char** argv)
 {
     map<string, string> argTable;
     for(int i = 0; i< argc -1 ; i++)
     {
         string s = argv[i];
-        if(s == "-account")
+        if(s == "-account")//account to transfer out of (int)
         {
-            argTable[argv[i]] = (argv[i+1]);//atoi
+            argTable[argv[i]] = (argv[i+1]);
         }
-        else if(s == "-transfer")
+        else if(s == "-transfer")//amount to transfer (float)
         {
-            argTable[argv[i]] = (argv[i+1]);//atof
+            argTable[argv[i]] = (argv[i+1]);
         }
-        else if(s == "-to")
+        else if(s == "-to")//account to transfer into (int)
         {
-            argTable[argv[i]] = (argv[i+1]);//atoi
+            argTable[argv[i]] = (argv[i+1]);
         }
         else
         {
@@ -36,32 +39,26 @@ map<string, string> parseArgs(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
+    //make sure users call correctly
     if(argc != 7)
+    {
+        cout << "Incorrect call to Terminal application" << endl;
         return -1;
+    }
     auto mp = parseArgs(argc, argv);
+    //again, ensure a correct call
     if(mp.find("-account") == mp.end())
     {
         cout << "Unable to launch terminal" << endl;
         return -1;
     }
+    //initialize the bank terminal
     Terminal term(atoi(mp["-account"].c_str()));
+    //run the transfer
     if(mp.find("-to") != mp.end() && mp.find("-transfer") != mp.end())
     {
         Account acctTo(atoi(mp["-to"].c_str()));
         term.transfer(acctTo, atof(mp["-transfer"].c_str()));
-        //user will have write access, needs to write something like the following
-        /*
-        vector<future<int> > v;
-        for(int i = 0; i < 100; i++)
-        {
-            v.emplace_back(async(launch::async, [&term, &acctTo, &mp](){term.transfer(acctTo, atof(mp["-transfer"].c_str())); return 0; }));
-        }
-        for(auto &&f: v)
-        {
-            f.get();
-
-        }
-        */
     }
 
     return 0;

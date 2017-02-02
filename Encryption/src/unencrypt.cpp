@@ -8,7 +8,7 @@ int main()
 {
     int x = 13;
     int count = 1;
-    string apb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/:.";
+    string apb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/:. ";
     vector<char> alphabet(apb.begin(), apb.end());
     string str;
     cin >> str;

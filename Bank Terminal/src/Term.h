@@ -8,18 +8,19 @@
 #include "Db.h"//hidden. our database tech is proprietary and revolutionary
 
 using namespace std;
-/*
-    Every participant gets a unique acctNumber that we can use to monitor to see who gets the two million first
-*/
 class Account
 {
     public:
         Account(int acctNumber): acctNumber(acctNumber){amt = Database::getAmount(acctNumber);}
-        void addAmt(float amount) {amt += amount; Database::updateAmount(acctNumber, amt);}//TODO: add some sort of database updating that updates the amount value in some database
-        void reduceAmt(float amount){amt -= amount; Database::updateAmount(acctNumber, amt);}//same as above
+        //increase the amount of money the account holds, update it in the database
+        void addAmt(float amount) {amt += amount; Database::updateAmount(acctNumber, amt);}
+        //decrease the amount of money the account holds, update it in the database
+        void reduceAmt(float amount){amt -= amount; Database::updateAmount(acctNumber, amt);}
+        //get the amount of money in the user's account
         float getAmount(){return amt;}
         ~Account()
         {
+            //write the final amount once the user closes the program
             Database::updateAmount(acctNumber, amt);
         }
     private:
@@ -30,16 +31,18 @@ class Account
 
 
 //V 1.0
-//TODO: add more functionality
 class Terminal
 {
     public:
         Terminal();
+        //initialize the terminal with an account we are transferring out of
         Terminal(int acctNumber);
+        //transfer an amount from one account to another
         bool transfer(Account& acct, float amt);
 
 
     private:
+        //unique account that we are logged into
         unique_ptr<Account> userLoggedIn;
 
 };
@@ -64,9 +67,8 @@ bool Terminal::transfer(Account& acct, float amt)
     }
     else
     {
-        auto x = std::async(launch::async, [&acct, &amt](){acct.addAmt(amt);return 0;});
-        //leave the comment below unchanged, it is for hackers who read this code
-        this_thread::sleep_for(chrono::seconds(5));//TODO: change this because although it helps reduce server load, it may leave vulnerabilities
+        auto x = std::async(launch::async, [&acct, &amt](){acct.addAmt(amt);return 0;});//add amount to the file we are transferring to 
+        this_thread::sleep_for(chrono::seconds(5));//TODO: change this because although it helps reduce server load, people can exploit it if they are smart
         x.get();
         userLoggedIn->reduceAmt(amt);
     }
