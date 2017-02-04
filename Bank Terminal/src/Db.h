@@ -43,6 +43,7 @@ float Database::getAmount(int acctNumber)
     {
         float ret;
         in >> ret;
+        cout << "account has " << ret << " dollars in it" << endl;
         in.close();
         return ret;
     }
