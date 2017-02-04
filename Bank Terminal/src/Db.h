@@ -10,18 +10,21 @@ class Database
         Database();
         static bool updateAmount(int acctNumber, float newAmt);
         static float getAmount(int acctNumber);
+        static void WIN();
     private:
         static string baseDirectory;
 };
 
 string Database::baseDirectory = "/tmp/losaltoshacksdb/";//TODO: set up this dir on the computer
 
+
+void Database::WIN()
+{
+    cout << "Congrats, you've finished!" << endl << "Please submit the following hash, and your names to the first page from this CTF: " << endl << "838eae573a858f9fabfa88e1c9a68bd4fd90ea87263b8507486255fc04c69b18" << endl;
+}
+
 bool Database::updateAmount(int acctNumber, float newAmt)
 {
-    if(newAmt >= 5000000)
-    {
-        cout << "Congrats, you've finished!" << endl << "Please submit the following hash, and your names to the first page from this CTF: " << endl << "838eae573a858f9fabfa88e1c9a68bd4fd90ea87263b8507486255fc04c69b18" << endl;
-    }
     ofstream out((baseDirectory + to_string(acctNumber)));
     if(!out.bad())
     {
