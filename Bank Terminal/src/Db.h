@@ -32,6 +32,7 @@ bool Database::updateAmount(int acctNumber, float newAmt)
         out.close();
         return true;
     }
+    cout << "Unable to write to directory" << endl;
     return false;
 }
 
@@ -45,5 +46,6 @@ float Database::getAmount(int acctNumber)
         in.close();
         return ret;
     }
+    cout << "Unable to read from directory" << endl;
 }
 #endif
