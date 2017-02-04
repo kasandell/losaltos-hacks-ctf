@@ -1,0 +1,81 @@
+body, html {
+	background: black;
+	color: #00ff00;
+	font-family: monospace;
+	padding: 0 5vh;
+}
+
+.main {
+	text-align: center;
+}
+
+h3 {
+	color: tomato;
+	font-weight: 300;
+	font-size: 1.5em;
+}
+
+h4 {
+	font-size: 3em;
+}
+
+p {
+	font-size: 1.5em;
+}
+
+.container {
+	text-align: center;
+}
+
+.go {
+	background-color: #00ff00;
+	color: black;
+	display: inline-block;
+	padding: 10px;
+	font-size: 1.75em;
+	margin: 0 auto;
+	text-decoration: none;
+	border: none;
+	font-family: monospace;
+	border: 1px solid black;
+}
+
+.go:hover {
+	border: 1px solid #00ff00;
+	background: black;
+	color: #00ff00;
+	cursor: pointer;
+}
+
+.inp {
+	background: transparent;
+	color: #00ff00;
+	border: none;
+	border-bottom: 1px solid #00ff00;
+	font-family: monospace;
+	padding: 10px;
+	font-size: 1.75em;
+	text-align: center;
+}
+
+.inp:focus {
+	outline: none;
+	border-bottom: 1px solid tomato;
+}
+
+.disabled {
+	color: #4d4d4d;
+	border: 1px solid #4d4d4d;
+	background: black;
+}
+
+.disabled:hover {
+	cursor: default;
+	color: #4d4d4d;
+	border: 1px solid #4d4d4d;
+	background: black;
+}
+
+.back {
+	color: orange;
+}
