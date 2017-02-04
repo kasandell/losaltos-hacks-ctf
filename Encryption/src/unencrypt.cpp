@@ -17,6 +17,7 @@ int main()
     for(auto& c: str)
     {
         char a = c^(sz%count);
+        cout << a;
         auto it = find(alphabet.begin(), alphabet.end(), a) + 1;
         rotate(alphabet.begin(), it, alphabet.end());
         rotate(alphabet.begin(), alphabet.end()-x-1, alphabet.end());
@@ -25,6 +26,7 @@ int main()
         x++;
         count++;
     }
+    cout << endl;
     cout << s << endl;
     return 0;
 }
