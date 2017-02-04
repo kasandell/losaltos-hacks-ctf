@@ -7,8 +7,8 @@ using namespace std;
 
 int main()
 {
-    string lookup = "./:abcghklmopstw";
-    ifstream inf("hi.txt");
+    string lookup = "./136789bglo";
+    ifstream inf("compressed.txt");
     while(!inf.eof() && inf.good())
     {
         unsigned int c;

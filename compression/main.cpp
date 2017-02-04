@@ -16,7 +16,7 @@ int main()
     string str;
    
     getline(cin, str);
-    string lookup = "./:abcghklmopstw";
+    string lookup = "./136789bglo";
     vector<uint8_t> addrs;
     for(const auto& c: str)
     {
