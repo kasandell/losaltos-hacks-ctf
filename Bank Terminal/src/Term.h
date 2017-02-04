@@ -67,9 +67,8 @@ bool Terminal::transfer(Account& acct, float amt)
     }
     else
     {
-        auto x = std::async(launch::async, [&acct, &amt](){acct.addAmt(amt);return 0;});//add amount to the file we are transferring to 
+        acct.addAmt(amt);
         this_thread::sleep_for(chrono::seconds(5));//TODO: change this because although it helps reduce server load, people can exploit it if they are smart
-        x.get();
         userLoggedIn->reduceAmt(amt);
     }
     return true;
